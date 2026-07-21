@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleazar Tejero De Venecia - IT Network Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --text-dark: #0f172a;
+            --text-light: #475569;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --success-light: #d1fae5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 4px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 50px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header .title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-tabs {
+            background: white;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 16px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-light);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .card-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 8px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--success-light);
+            color: var(--success);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .skill-category {
+            margin-bottom: 24px;
+        }
+
+        .skill-category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 32px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .timeline-content .company {
+            font-size: 15px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .timeline-content .period {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 12px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .timeline-content li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-item {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .education-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .education-item .school {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .education-item .year {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-light);
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header .title {
+                font-size: 18px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-container {
+                overflow-x: auto;
+            }
+
+            .nav-btn {
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-tags {
+                gap: 6px;
+            }
+
+            .skill-tag {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <div class="profile-image">👨‍💼</div>
+            <h1>ELEAZAR TEJERO DE VENECIA</h1>
+            <p class="title">Senior IT Network Specialist | AI-Enhanced Solutions Architect | DevOps Engineer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:eleazardevenecia@gmail.com" style="color: white; text-decoration: none;">eleazardevenecia@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>(0905) 1939860</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Caloocan City, Philippines</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-tabs">
+        <div class="nav-container">
+            <button class="nav-btn active" data-section="overview">Overview</button>
+            <button class="nav-btn" data-section="experience">Experience</button>
+            <button class="nav-btn" data-section="skills">Skills & Expertise</button>
+            <button class="nav-btn" data-section="ai-portfolio">AI & Automation</button>
+            <button class="nav-btn" data-section="education">Education</button>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="section active">
+            <div class="section-title">Professional Overview</div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">11+</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Industries Served</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-dark);">Professional Summary</h3>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-light); margin-bottom: 12px;">
+                    Dynamic and results-driven IT specialist with extensive expertise in designing, implementing, and maintaining comprehensive security solutions and network infrastructure. Proven track record of delivering high-performance network architectures, CCTV systems, access control solutions, and VoIP implementations across hospitality, retail, and manufacturing sectors.
+                </p>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-light);">
+                    Known for strong problem-solving abilities, meticulous attention to detail, and delivering solutions that exceed client expectations. Skilled in cloud management, virtualization, and modern security protocols.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-dark);">Core Competencies</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 15px;">
+                    <div>
+                        <strong style="color: var(--primary);">🔒 Security & Access Control</strong>
+                        <p style="color: var(--text-light); margin-top: 8px;">CCTV systems, Biometric access, Proximity cards, Physical security</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">🌐 Network Infrastructure</strong>
+                        <p style="color: var(--text-light); margin-top: 8px;">LAN, WAN, VPN, SD-WAN, Firewalls, Fortinet solutions</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">☁️ Cloud & Virtualization</strong>
+                        <p style="color: var(--text-light); margin-top: 8px;">VMware, Hyper-V, VirtualBox, Office 365, AWS basics</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">📱 System Administration</strong>
+                        <p style="color: var(--text-light); margin-top: 8px;">Windows Server, Active Directory, Linux (Ubuntu, CentOS)</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary);">🤖 AI-Enhanced Solutions</strong>
+                        <p style="color: var(--text-light); margin-top: 8px;">Claude AI integration, Automation scripting, Smart development</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid var(--primary);">
+                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--primary);">🚀 The AI Advantage</h3>
+                <p style="font-size: 15px; line-height: 1.8; color: var(--text-dark);">
+                    I leverage <strong>Claude AI</strong> as a strategic development partner to deliver solutions <strong>3-5x faster</strong> without compromising quality. This means:
+                </p>
+                <ul style="margin-top: 12px; margin-left: 16px; font-size: 14px; color: var(--text-dark); line-height: 1.8;">
+                    <li><strong>⚡ Rapid Prototyping:</strong> Turn complex requirements into working solutions in days, not weeks</li>
+                    <li><strong>💡 Intelligent Design:</strong> AI-assisted architecture for scalable, secure, future-proof systems</li>
+                    <li><strong>🔄 Smart Automation:</strong> Automated scripting, DevOps integration, and continuous improvement</li>
+                    <li><strong>💰 Cost Efficiency:</strong> Lower development costs translated into better value for clients</li>
+                    <li><strong>📚 Complete Documentation:</strong> Comprehensive technical guides and runbooks generated intelligently</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Network Specialist</h3>
+                        <p class="company">Warbucks / Rephil Corporation</p>
+                        <p class="period">Aug 2023 - Present (1+ years)</p>
+                        <ul>
+                            <li>Manage VPS domain settings, cPanel, and Outlook configurations for cloud services</li>
+                            <li>Oversee comprehensive network infrastructure with expertise in Fortinet (FortiGate, FortiClient) and Ubiquiti systems</li>
+                            <li>Handle LAN, WAN, SD-WAN, VPN, SSL configurations and traffic shaping</li>
+                            <li>Manage virtualization platforms: VMware, Hyper-V, VirtualBox, and VM Workstation</li>
+                            <li>Administer Ubuntu, CentOS, and Windows Server operating systems</li>
+                            <li>Develop and program web applications using PHP and MySQL databases</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Field Specialist / Officer</h3>
+                        <p class="company">Pulse Optix Inc - Structured Cabling & IT Solutions</p>
+                        <p class="period">Oct 2017 - June 2023 (5+ years)</p>
+                        <ul>
+                            <li>Designed and implemented CCTV systems ensuring optimal coverage and resolution</li>
+                            <li>Conducted site surveys and provided detailed security recommendations</li>
+                            <li>Installed and configured PABX systems integrated with VoIP solutions</li>
+                            <li>Managed Office 365 deployments including user administration and licensing</li>
+                            <li>Administered Windows Server environments with Active Directory and Group Policy expertise</li>
+                            <li>Implemented biometric and proximity card access control solutions</li>
+                            <li>Designed network infrastructure including wireless, routers, switches, and firewalls</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Specialist</h3>
+                        <p class="company">The Luneta Hotel - Athenee Resort and Hotel Inc</p>
+                        <p class="period">May 2016 - 2017</p>
+                        <ul>
+                            <li>Managed CCTV, biometrics, PABX, IPTV systems and monitoring infrastructure</li>
+                            <li>Provided Active Directory and Remote Desktop Connection administration</li>
+                            <li>Supported Windows and Linux server environments</li>
+                            <li>Managed structured cabling and hardware/software infrastructure</li>
+                            <li>Implemented stock control inventory systems and procurement reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Technical Support Engineering / MIS</h3>
+                        <p class="company">Puregold Price Club, Inc - Retail & Merchandise</p>
+                        <p class="period">Oct 2011 - Jan 2016 (4+ years)</p>
+                        <ul>
+                            <li>Configured Client-Server networks using Windows 2003/2008 servers and Active Directory</li>
+                            <li>Administered file servers for POS systems (Linux CentOS)</li>
+                            <li>Managed Remote Desktop Connection infrastructure</li>
+                            <li>Responsible for POS, hardware, software, and network infrastructure installation and maintenance</li>
+                            <li>Created daily, weekly, and monthly sales and network health reports</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Support / Technical Support</h3>
+                        <p class="company">Onesimus Corporation - Retail, Garment & Manufacturing</p>
+                        <p class="period">Apr 2011 - Sep 2011</p>
+                        <ul>
+                            <li>Handled POS system installation, setup, and maintenance</li>
+                            <li>Provided hardware and software user support</li>
+                            <li>Managed structured cabling infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Staff / Programmer (PHP, MySQL, HTML, CSS)</h3>
+                        <p class="company">Jollibee LRC Group / GL Product Unlimited Worldwide Corp - Food Industry</p>
+                        <p class="period">May 2010 - Feb 2011</p>
+                        <ul>
+                            <li>Developed web applications using HTML, CSS, PHP, and MySQL</li>
+                            <li>Monitored website servers and managed hosting capacity</li>
+                            <li>Performed video editing and code research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section">
+            <div class="section-title">Technical Skills & Expertise</div>
+
+            <div class="card">
+                <div class="skill-category">
+                    <div class="skill-category-title">🔒 Network Administration & Security</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LAN/WAN Configuration</span>
+                        <span class="skill-tag">VPN & SSL</span>
+                        <span class="skill-tag">SD-WAN</span>
+                        <span class="skill-tag">Firewalls</span>
+                        <span class="skill-tag">Fortinet (FortiGate/FortiClient)</span>
+                        <span class="skill-tag">Ubiquiti Networks</span>
+                        <span class="skill-tag">Traffic Shaping</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🏢 Business Systems & Cloud</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Office 365</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">Group Policy</span>
+                        <span class="skill-tag">DNS Administration</span>
+                        <span class="skill-tag">VPS Management</span>
+                        <span class="skill-tag">cPanel</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">☁️ Virtualization & Cloud</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VMware</span>
+                        <span class="skill-tag">Hyper-V</span>
+                        <span class="skill-tag">VirtualBox</span>
+                        <span class="skill-tag">VM Workstation</span>
+                        <span class="skill-tag">Cloud Solutions</span>
+                        <span class="skill-tag">Fortinet Cloud</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🐧 Operating Systems</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Windows (XP-Server 2019)</span>
+                        <span class="skill-tag">Ubuntu</span>
+                        <span class="skill-tag">CentOS</span>
+                        <span class="skill-tag">Linux Administration</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🎥 Security Systems</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">CCTV Design & Installation</span>
+                        <span class="skill-tag">Access Control Systems</span>
+                        <span class="skill-tag">Biometric Systems</span>
+                        <span class="skill-tag">Proximity Card Systems</span>
+                        <span class="skill-tag">PABX/PBX Systems</span>
+                        <span class="skill-tag">VoIP Integration</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">💻 Programming & Web Development</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Web Hosting</span>
+                        <span class="skill-tag">FTP Management</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🛠️ Specialized Services</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Structured Cabling</span>
+                        <span class="skill-tag">POS Systems</span>
+                        <span class="skill-tag">Remote Desktop Connection</span>
+                        <span class="skill-tag">Hardware Support</span>
+                        <span class="skill-tag">Software Installation</span>
+                        <span class="skill-tag">System Integration</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">🤖 AI & Automation Expertise</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Claude AI Integration</span>
+                        <span class="skill-tag">AI-Assisted Development</span>
+                        <span class="skill-tag">PowerShell Automation</span>
+                        <span class="skill-tag">Python Scripting</span>
+                        <span class="skill-tag">Bash Scripting</span>
+                        <span class="skill-tag">Infrastructure as Code</span>
+                        <span class="skill-tag">DevOps Practices</span>
+                        <span class="skill-tag">System Monitoring</span>
+                        <span class="skill-tag">Intelligent Documentation</span>
+                        <span class="skill-tag">Data Analysis & Reporting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI & AUTOMATION SECTION -->
+        <section id="ai-portfolio" class="section">
+            <div class="section-title">AI Expertise & Automation Portfolio</div>
+
+            <div class="card">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-dark);">Why Claude AI as My Development Companion</h3>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-light); margin-bottom: 16px;">
+                    As a seasoned IT professional with over 11 years of experience, I've embraced Claude AI as a strategic development partner to accelerate innovation and deliver smarter solutions. Claude complements my technical expertise by providing:
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 20px;">
+                    <div style="padding: 16px; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">🚀 Rapid Development & Prototyping</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Generate code architectures, system designs, and technical solutions 10x faster while maintaining production-quality standards</p>
+                    </div>
+                    <div style="padding: 16px; background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); border-radius: 8px; border-left: 4px solid #ec4899;">
+                        <h4 style="color: #ec4899; font-weight: 600; margin-bottom: 8px;">💡 Creative Problem Solving</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Brainstorm innovative solutions for complex network challenges, security scenarios, and system integration issues</p>
+                    </div>
+                    <div style="padding: 16px; background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-radius: 8px; border-left: 4px solid #10b981;">
+                        <h4 style="color: #10b981; font-weight: 600; margin-bottom: 8px;">📚 Knowledge Enhancement</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Stay current with emerging technologies, best practices, and industry standards in IT and cybersecurity</p>
+                    </div>
+                    <div style="padding: 16px; background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%); border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <h4 style="color: #f59e0b; font-weight: 600; margin-bottom: 8px;">⚙️ Automation & Scripting</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Generate PowerShell, Bash, and Python scripts for system automation, reducing manual tasks and improving efficiency</p>
+                    </div>
+                    <div style="padding: 16px; background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); border-radius: 8px; border-left: 4px solid #a855f7;">
+                        <h4 style="color: #a855f7; font-weight: 600; margin-bottom: 8px;">🔍 Technical Documentation</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Create comprehensive system documentation, disaster recovery plans, and technical guides quickly and professionally</p>
+                    </div>
+                    <div style="padding: 16px; background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-radius: 8px; border-left: 4px solid #ef4444;">
+                        <h4 style="color: #ef4444; font-weight: 600; margin-bottom: 8px;">🛡️ Security Analysis</h4>
+                        <p style="color: var(--text-dark); font-size: 14px;">Analyze security vulnerabilities, design hardening strategies, and develop comprehensive threat mitigation plans</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 20px; color: var(--text-dark);">AI-Powered Projects & Capabilities</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Intelligent Network Design Solutions</h3>
+                            <p class="period">Using Claude AI for Architecture & Planning</p>
+                            <ul>
+                                <li>Leverage AI to design optimized network topologies for complex enterprise environments</li>
+                                <li>Generate comprehensive network documentation with detailed configurations</li>
+                                <li>Analyze security vulnerabilities and generate hardening recommendations</li>
+                                <li>Create disaster recovery and business continuity plans</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Automation & DevOps Integration</h3>
+                            <p class="period">Claude-Assisted Infrastructure Automation</p>
+                            <ul>
+                                <li>Generate PowerShell scripts for Windows Server automation</li>
+                                <li>Create Bash and Python scripts for Linux infrastructure management</li>
+                                <li>Develop infrastructure-as-code (IaC) solutions with Terraform/Ansible templates</li>
+                                <li>Build monitoring and alerting configurations for network health</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Web Applications & System Tools</h3>
+                            <p class="period">AI-Enhanced Development</p>
+                            <ul>
+                                <li>Develop interactive dashboards for network monitoring and system analytics</li>
+                                <li>Create admin tools for server management and user provisioning</li>
+                                <li>Build secure web applications with modern frameworks</li>
+                                <li>Generate responsive interfaces for system administration tasks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Technical Writing & Documentation</h3>
+                            <p class="period">AI-Powered Knowledge Base Creation</p>
+                            <ul>
+                                <li>Create comprehensive technical documentation for system implementations</li>
+                                <li>Generate step-by-step runbooks for common IT operations</li>
+                                <li>Develop security policies and procedures documentation</li>
+                                <li>Produce training materials for technical staff and end-users</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Data Analysis & Reporting</h3>
+                            <p class="period">Intelligent Business Intelligence</p>
+                            <ul>
+                                <li>Analyze network performance data and generate actionable insights</li>
+                                <li>Create executive dashboards and KPI tracking systems</li>
+                                <li>Generate automated reporting for compliance and audit requirements</li>
+                                <li>Forecast infrastructure needs based on historical data patterns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-dark);">AI Integration in My IT Practice</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+                    <div style="text-align: center; padding: 16px; background: var(--bg-light); border-radius: 8px;">
+                        <div style="font-size: 28px; margin-bottom: 8px;">⚡</div>
+                        <div style="font-weight: 600; color: var(--text-dark); font-size: 14px;">Faster Delivery</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">3-5x faster solution development</div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--bg-light); border-radius: 8px;">
+                        <div style="font-size: 28px; margin-bottom: 8px;">🎯</div>
+                        <div style="font-weight: 600; color: var(--text-dark); font-size: 14px;">Better Quality</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Comprehensive, well-architected solutions</div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--bg-light); border-radius: 8px;">
+                        <div style="font-size: 28px; margin-bottom: 8px;">💰</div>
+                        <div style="font-weight: 600; color: var(--text-dark); font-size: 14px;">Cost Reduction</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Lower implementation costs for clients</div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--bg-light); border-radius: 8px;">
+                        <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
+                        <div style="font-weight: 600; color: var(--text-dark); font-size: 14px;">Innovation Edge</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Stay ahead of industry trends</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid var(--primary);">
+                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--primary);">My AI-Powered Value Proposition</h3>
+                <p style="font-size: 15px; line-height: 1.8; color: var(--text-dark);">
+                    I combine 11+ years of hands-on IT experience with cutting-edge AI capabilities to deliver enterprise-grade solutions faster and smarter. Claude AI enables me to scale my expertise—automating routine tasks, generating production-ready code, and solving complex architectural challenges—while I focus on strategic thinking and client success. This hybrid approach means clients get both deep technical expertise AND modern AI-accelerated development efficiency.
+                </p>
+                <p style="font-size: 15px; line-height: 1.8; color: var(--text-dark); margin-top: 12px;">
+                    <strong>Result:</strong> Better solutions, faster delivery, lower costs, and a competitive advantage for every engagement.
+                </p>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="section">
+            <div class="section-title">Education & Certifications</div>
+
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p class="school">Our Lady of Fatima University</p>
+                    <p class="year">June 2006 - March 2010</p>
+                    <p style="margin-top: 12px; color: var(--text-light); font-size: 14px;">
+                        120 McArthur Hi-way, Valenzuela City
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>High School Diploma</h3>
+                    <p class="school">Caloocan High School</p>
+                    <p class="year">June 2002 - March 2006</p>
+                    <p style="margin-top: 12px; color: var(--text-light); font-size: 14px;">
+                        Grace Park, 10th Ave. Caloocan City
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Elementary Education</h3>
+                    <p class="school">Caloocan Elementary School</p>
+                    <p class="year">June 1996 - March 2002</p>
+                    <p style="margin-top: 12px; color: var(--text-light); font-size: 14px;">
+                        Grace Park, 10th Ave. Caloocan City
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-dark);">Industry Expertise</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Hospitality</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Hotels & Resorts</div>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Retail</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">POS Systems</div>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Manufacturing</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Operations</div>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Food & Beverage</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Quick Service</div>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Technology Services</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">IT Solutions</div>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 14px; font-weight: 600; color: var(--primary);">Garment</div>
+                        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Manufacturing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="container">
+        <div class="cta-section">
+            <h2>Ready to Transform Your IT Infrastructure with AI-Powered Solutions?</h2>
+            <p>With 11+ years of hands-on IT expertise combined with cutting-edge AI capabilities, I deliver enterprise-grade solutions 3-5x faster. Experience the future of IT consulting today.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:eleazardevenecia@gmail.com" class="btn">Get In Touch</a>
+                <a href="tel:+639051939860" class="btn btn-secondary">Call Me</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.section');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const sectionId = btn.dataset.section;
+
+                // Remove active class from all buttons and sections
+                navBtns.forEach(b => b.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding section
+                btn.classList.add('active');
+                document.getElementById(sectionId).classList.add('active');
+
+                // Smooth scroll to section
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
